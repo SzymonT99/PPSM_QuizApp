@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
@@ -12,32 +12,41 @@
         tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.ppsm.quiz_app.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
+            android:id="@+id/action_nav_home_to_nav_register"
+            app:destination="@id/nav_register" />
         <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
+            android:id="@+id/action_nav_home_to_nav_mainpage"
+            app:destination="@id/nav_mainpage" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.ppsm.quiz_app.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_mainpage"
+        android:name="com.ppsm.quiz_app.ui.mainpage.MainPageFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_mainpage" >
+        <action
+            android:id="@+id/action_nav_mainpage_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_addquestion"
+        android:name="com.ppsm.quiz_app.ui.add_question.AddQuestionFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_add_question"></fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.ppsm.quiz_app.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_register"
+        android:name="com.ppsm.quiz_app.ui.register.RegisterFragment"
+        android:label="register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_nav_register_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.register.RegisterFragment">
 
     <TextView
         android:id="@+id/logo"
@@ -50,7 +50,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Logowanie"
+        android:text="Rejestracja"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,13 +61,13 @@
         app:layout_constraintVertical_bias="0.466" />
 
     <EditText
-        android:id="@+id/input_login"
+        android:id="@+id/input_e-mail"
         android:layout_width="260dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
-        android:hint="Login"
-
+        android:hint="E-mail"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,13 +78,13 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <EditText
-        android:id="@+id/input_passwd"
+        android:id="@+id/input_login"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
-        android:hint="Hasło"
-
+        android:hint="Login"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,6 +93,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_settings"
         app:layout_constraintVertical_bias="0.079" />
+
+    <EditText
+        android:id="@+id/input_passwd"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:hint="Hasło"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_settings"
+        app:layout_constraintVertical_bias="0.296" />
+
+    <EditText
+        android:id="@+id/input_passwd2"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:hint="Powtórz hasło"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_settings"
+        app:layout_constraintVertical_bias="0.52" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -107,30 +141,16 @@
         app:layout_constraintVertical_bias="0.288" />
 
     <Button
-        android:id="@+id/Login_Btn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="10dp"
-        android:text="Zaloguj"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_passwd"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
         android:id="@+id/Register_Btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="28dp"
         android:layout_marginBottom="10dp"
         android:text="Zarejestruj"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_Btn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/input_passwd"
+        app:layout_constraintVertical_bias="0.73" />
 </androidx.constraintlayout.widget.ConstraintLayout>
