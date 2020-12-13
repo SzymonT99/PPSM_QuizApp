@@ -22,7 +22,7 @@
             android:title="Add question" />
         <item
             android:id="@+id/nav_stats"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_stats"
             android:title="Stats" />
         <item
             android:id="@+id/nav_ranking"
@@ -32,6 +32,25 @@
             android:id="@+id/nav_account"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Account management" />
-
+        <item
+            android:id="@+id/nav_admin_panel"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Admin panel" />
+        <item
+            android:id="@+id/nav_verify_question"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Weryfikuj pytanie" />
+        <item
+            android:id="@+id/nav_authors"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Autorzy" />
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Oceń nas" />
+        <item
+            android:id="@+id/nav_quiz"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Graj" />
     </group>
 </menu>

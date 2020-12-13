@@ -52,6 +52,31 @@
         android:label="Stats" />
 
     <fragment
+        android:id="@+id/nav_admin_panel"
+        android:name="com.ppsm.quiz_app.ui.admin_panel.AdminPanelFragment"
+        android:label="Admin panel"
+        tools:layout="@layout/fragment_admin_panel" />
+
+    <fragment
+        android:id="@+id/nav_verify_question"
+        android:name="com.ppsm.quiz_app.ui.admin_verify_question.VerifyQuestionFragment"
+        android:label="Verify question" />
+
+    <fragment
+        android:id="@+id/nav_authors"
+        android:name="com.ppsm.quiz_app.ui.authors.AuthorsFragment"
+        android:label="Authors" />
+    <fragment
+        android:id="@+id/nav_rate"
+        android:name="com.ppsm.quiz_app.ui.rate_us.RateFragment"
+        android:label="Rate" />
+    <fragment
+        android:id="@+id/nav_quiz"
+        android:name="com.ppsm.quiz_app.ui.quiz.QuizFragment"
+        android:label="Quiz"
+        tools:layout="@layout/fragment_quiz" />
+
+    <fragment
         android:id="@+id/nav_register"
         android:name="com.ppsm.quiz_app.ui.register.RegisterFragment"
         android:label="register"
