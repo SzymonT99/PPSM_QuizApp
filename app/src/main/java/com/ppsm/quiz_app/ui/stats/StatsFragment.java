@@ -1,4 +1,4 @@
-package com.ppsm.quiz_app.ui.slideshow;
+package com.ppsm.quiz_app.ui.stats;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,22 +14,22 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.ppsm.quiz_app.R;
 
-public class SlideshowFragment extends Fragment {
+public class StatsFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private StatsViewModel statsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        statsViewModel =
+                ViewModelProviders.of(this).get(StatsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_stats, container, false);
+        /*final TextView textView = root.findViewById(R.id.text_slideshow);
+        statsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
-        });
+        });*/
         return root;
     }
 }

@@ -30,16 +30,27 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_addquestion"
-        android:name="com.ppsm.quiz_app.ui.add_question.AddQuestionFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_add_question"></fragment>
+    android:id="@+id/nav_addquestion"
+    android:name="com.ppsm.quiz_app.ui.add_question.AddQuestionFragment"
+    android:label="AddQuestion"
+    tools:layout="@layout/fragment_add_question"/>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.ppsm.quiz_app.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_ranking"
+        android:name="com.ppsm.quiz_app.ui.ranking.RankingFragment"
+        android:label="Ranking" />
+
+    <fragment
+        android:id="@+id/nav_stats"
+        android:name="com.ppsm.quiz_app.ui.stats.StatsFragment"
+        android:label="Stats"
+        tools:layout="@layout/fragment_stats" />
+
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.ppsm.quiz_app.ui.manage_acc.AccountFragment"
+        android:label="Stats" />
+
     <fragment
         android:id="@+id/nav_register"
         android:name="com.ppsm.quiz_app.ui.register.RegisterFragment"
