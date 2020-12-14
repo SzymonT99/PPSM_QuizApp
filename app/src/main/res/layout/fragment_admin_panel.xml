@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.admin_panel.AdminPanelFragment">
+    tools:context=".ui.AdminPanelFragment">
 
 
     <TextView
         android:id="@+id/admin_panel_description"
         android:layout_width="412dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand_bold"
+        android:gravity="center"
         android:text="Lista proponowanych pytań użytkowników"
         android:textAlignment="center"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

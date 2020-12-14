@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.rate_us.RateFragment">
+    tools:context=".ui.RateFragment">
 
     <TextView
         android:id="@+id/authors_speech"

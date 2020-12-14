@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_authorization">
+
+    <fragment
+        android:id="@+id/nav_authorization"
+        android:name="com.ppsm.quiz_app.ui.AuthorizeFragment"
+        android:label="@string/menu_authorization"
+        tools:layout="@layout/fragment_authorize">
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_register"
+            app:destination="@id/nav_register" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_mainpage"
+            app:destination="@id/nav_main_page" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_main_page"
+        android:name="com.ppsm.quiz_app.ui.MainPageFragment"
+        android:label="@string/main_page"
+        tools:layout="@layout/fragment_mainpage">
+        <action
+            android:id="@+id/action_nav_mainpage_to_nav_home"
+            app:destination="@id/nav_authorization" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add_question"
+        android:name="com.ppsm.quiz_app.ui.AddQuestionFragment"
+        android:label="@string/menu_add_question"
+        tools:layout="@layout/fragment_add_question" />
+
+    <fragment
+        android:id="@+id/nav_ranking"
+        android:name="com.ppsm.quiz_app.ui.RankingFragment"
+        android:label="@string/menu_ranking" />
+
+    <fragment
+        android:id="@+id/nav_stats"
+        android:name="com.ppsm.quiz_app.ui.StatsFragment"
+        android:label="@string/action_settings"
+        tools:layout="@layout/fragment_stats" />
+
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.ppsm.quiz_app.ui.AccountFragment"
+        android:label="@string/menu_user_stats" />
+
+    <fragment
+        android:id="@+id/nav_admin_panel"
+        android:name="com.ppsm.quiz_app.ui.AdminPanelFragment"
+        android:label="@string/menu_admin_panel"
+        tools:layout="@layout/fragment_admin_panel" />
+
+    <fragment
+        android:id="@+id/nav_verify_question"
+        android:name="com.ppsm.quiz_app.ui.VerifyQuestionFragment"
+        android:label="@string/menu_add_question" />
+
+    <fragment
+        android:id="@+id/nav_authors"
+        android:name="com.ppsm.quiz_app.ui.AuthorsFragment"
+        android:label="@string/menu_authors" />
+    <fragment
+        android:id="@+id/nav_rate"
+        android:name="com.ppsm.quiz_app.ui.RateFragment"
+        android:label="@string/menu_rate" />
+    <fragment
+        android:id="@+id/nav_quiz"
+        android:name="com.ppsm.quiz_app.ui.QuizFragment"
+        android:label="Quiz"
+        tools:layout="@layout/fragment_quiz" />
+
+    <fragment
+        android:id="@+id/nav_register"
+        android:name="com.ppsm.quiz_app.ui.RegisterFragment"
+        android:label="@string/menu_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_nav_register_to_nav_home"
+            app:destination="@id/nav_authorization" />
+    </fragment>
+</navigation>

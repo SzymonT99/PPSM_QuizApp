@@ -5,52 +5,40 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_register"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Register" />
-        <item
-            android:id="@+id/nav_mainpage"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Main page" />
-        <item
-            android:id="@+id/nav_addquestion"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Add question" />
-        <item
             android:id="@+id/nav_stats"
-            android:icon="@drawable/ic_stats"
-            android:title="Stats" />
-        <item
-            android:id="@+id/nav_ranking"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Ranking" />
+            android:icon="@drawable/ic_assessment_black_24dp"
+            android:title="@string/menu_user_stats" />
         <item
             android:id="@+id/nav_account"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Account management" />
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/menu_settings" />
         <item
-            android:id="@+id/nav_admin_panel"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Admin panel" />
+            android:id="@+id/nav_ranking"
+            android:icon="@drawable/ic_emoji_events_24px"
+            android:title="@string/menu_ranking" />
         <item
-            android:id="@+id/nav_verify_question"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Weryfikuj pytanie" />
-        <item
-            android:id="@+id/nav_authors"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Autorzy" />
-        <item
-            android:id="@+id/nav_rate"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Oceń nas" />
+            android:id="@+id/nav_add_question"
+            android:icon="@drawable/ic_live_help_black_24dp"
+            android:title="@string/menu_add_question" />
         <item
             android:id="@+id/nav_quiz"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Graj" />
+            android:icon="@drawable/ic_play_circle_filled_black_24dp"
+            android:title="@string/menu_quiz" />
+        <item
+            android:id="@+id/nav_main_page"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/menu_main_page" />
+        <item
+            android:id="@+id/nav_authors"
+            android:icon="@drawable/ic_perm_identity_black_24dp"
+            android:title="@string/menu_authors" />
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_thumbs_up_down_24px"
+            android:title="@string/menu_rate" />
+        <item
+            android:id="@+id/nav_authorization"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            android:title="@string/menu_log_out" />
     </group>
 </menu>
