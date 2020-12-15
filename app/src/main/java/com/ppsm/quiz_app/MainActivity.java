@@ -1,10 +1,19 @@
 package com.ppsm.quiz_app;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
+import com.ppsm.quiz_app.ui.authorization.LoginActivity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,12 +39,20 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_stats, R.id.nav_account, R.id.nav_ranking, R.id.nav_add_question,
-                R.id.nav_quiz, R.id.nav_main_page, R.id.nav_authors, R.id.nav_rate, R.id.nav_authorization)  // TODO:: wylogowanie
+                R.id.nav_quiz, R.id.nav_main_page, R.id.nav_authors, R.id.nav_rate)  // TODO:: wylogowanie
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
+
+        return super.onCreateView(name, context, attrs);
     }
 
     @Override
@@ -50,5 +67,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void goHome(MenuItem item) {
+       //TODO: back button
+    }
+
+    public void logOut(MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package com.ppsm.quiz_app.ui;
+package com.ppsm.quiz_app.ui.fragments;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;

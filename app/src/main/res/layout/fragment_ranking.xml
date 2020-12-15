@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AuthorizeFragment">
+    tools:context=".ui.fragments.AuthorizeFragment">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/logoImage"
         android:layout_width="365dp"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
