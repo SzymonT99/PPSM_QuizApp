@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorBorderPoints">#629c44</color>
+    <color name="colorLayoutPoints">#dfedd6</color>
+    <color name="questionBorder">#631878</color>
+    <color name="questionBackground">#cfbad5</color>
+    <color name="buttonMainPage">#A42E1572</color>
 </resources>

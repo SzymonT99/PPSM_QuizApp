@@ -14,12 +14,14 @@
     <string name="menu_settings">Ustawienia konta</string>
     <string name="menu_ranking">Ranking</string>
     <string name="menu_add_question">Dodaj pytanie</string>
-    <string name="menu_quiz">Uruchom Quiz</string>
+    <string name="menu_quiz_run">Uruchom Quiz</string>
     <string name="menu_authors">O autorach</string>
     <string name="menu_rate">Oceń aplikacje</string>
     <string name="menu_log_out">Wyloguj</string>
     <string name="main_page">Powrót do Str. Głównej</string>
     <string name="menu_answer_verify">Weryfikacja pytania</string>
     <string name="menu_admin_panel">Panel admina</string>
+    <string name="menu_quiz">Quiz</string>
+    <string name="menu_user_result">Wynik Quizu</string>
 
 </resources>

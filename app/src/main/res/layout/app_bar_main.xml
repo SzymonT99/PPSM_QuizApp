@@ -15,16 +15,20 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
             android:background="#9F2E1572"
-            android:textAlignment="center"
             android:theme="@style/ToolbarTheme"
             app:navigationIcon="@drawable/ic_dehaze_black_24dp"
-            app:subtitleTextColor="#000000"
-            app:titleMarginStart="100sp"
-            app:titleTextAppearance="@style/ToolbarTheme"
-            app:titleTextColor="#000000" />
+            app:titleTextColor="#000000">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Toolbar Title" />
+        </androidx.appcompat.widget.Toolbar>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 

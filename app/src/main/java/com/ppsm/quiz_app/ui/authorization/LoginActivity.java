@@ -10,11 +10,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.internal.bind.DateTypeAdapter;
 import com.ppsm.quiz_app.MainActivity;
 import com.ppsm.quiz_app.R;
 import com.ppsm.quiz_app.http.JsonPlaceholderAPI;
 import com.ppsm.quiz_app.model.UserAutorizationDto;
 import com.ppsm.quiz_app.ui.admin.AdminActivity;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    public void loginUser(View view) {
+    public void loginUser(View view){
 
         if (!loginText.getText().toString().equals("") && !passwordText.getText().toString().equals("")) {
 

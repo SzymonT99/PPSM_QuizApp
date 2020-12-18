@@ -8,54 +8,99 @@
     <fragment
         android:id="@+id/nav_main_page"
         android:name="com.ppsm.quiz_app.ui.fragments.MainPageFragment"
-        android:label="@string/main_page"
-        tools:layout="@layout/fragment_mainpage"/>
+        tools:layout="@layout/fragment_mainpage">
+        <action
+            android:id="@+id/action_nav_main_page_to_nav_quiz"
+            app:destination="@id/nav_quiz"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/nav_main_page" />
+        <action
+            android:id="@+id/action_nav_main_page_to_nav_ranking"
+            app:destination="@id/nav_ranking"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/nav_main_page" />
+        <action
+            android:id="@+id/action_nav_main_page_to_nav_stats"
+            app:destination="@id/nav_stats"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/nav_main_page" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_add_question"
         android:name="com.ppsm.quiz_app.ui.fragments.AddQuestionFragment"
-        android:label="@string/menu_add_question"
         tools:layout="@layout/fragment_add_question" />
 
     <fragment
         android:id="@+id/nav_ranking"
-        android:name="com.ppsm.quiz_app.ui.fragments.RankingFragment"
-        android:label="@string/menu_ranking" />
+        android:name="com.ppsm.quiz_app.ui.fragments.RankingFragment" />
 
     <fragment
         android:id="@+id/nav_stats"
         android:name="com.ppsm.quiz_app.ui.fragments.StatsFragment"
-        android:label="@string/action_settings"
-        tools:layout="@layout/fragment_stats" />
+        tools:layout="@layout/fragment_stats">
+    </fragment>
 
     <fragment
         android:id="@+id/nav_account"
-        android:name="com.ppsm.quiz_app.ui.fragments.AccountFragment"
-        android:label="@string/menu_user_stats" />
-
-    <fragment
-        android:id="@+id/nav_admin_panel"
-        android:name="com.ppsm.quiz_app.ui.fragments.AdminPanelFragment"
-        android:label="@string/menu_admin_panel"
-        tools:layout="@layout/fragment_admin_panel" />
-
-    <fragment
-        android:id="@+id/nav_verify_question"
-        android:name="com.ppsm.quiz_app.ui.fragments.VerifyQuestionFragment"
-        android:label="@string/menu_add_question" />
+        android:name="com.ppsm.quiz_app.ui.fragments.AccountFragment" />
 
     <fragment
         android:id="@+id/nav_authors"
-        android:name="com.ppsm.quiz_app.ui.fragments.AuthorsFragment"
-        android:label="@string/menu_authors" />
+        android:name="com.ppsm.quiz_app.ui.fragments.AuthorsFragment" />
     <fragment
         android:id="@+id/nav_rate"
-        android:name="com.ppsm.quiz_app.ui.fragments.RateFragment"
-        android:label="@string/menu_rate" />
+        android:name="com.ppsm.quiz_app.ui.fragments.RateFragment" />
     <fragment
         android:id="@+id/nav_quiz"
         android:name="com.ppsm.quiz_app.ui.fragments.QuizFragment"
-        android:label="Quiz"
-        tools:layout="@layout/fragment_quiz" />
+        tools:layout="@layout/fragment_quiz">
+
+        <action
+            android:id="@+id/action_nav_quiz_to_nav_user_result"
+            app:destination="@id/nav_user_result"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/nav_main_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_user_result"
+        android:name="com.ppsm.quiz_app.ui.fragments.UserResultFragment"
+        tools:layout="@layout/fragment_user_result">
+        <argument
+            android:name="correctAnswers"
+            app:argType="integer" />
+        <argument
+            android:name="totalQuestion"
+            app:argType="integer" />
+        <argument
+            android:name="points"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_nav_user_result_to_nav_quiz"
+            app:destination="@id/nav_quiz"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_nav_user_result_to_nav_ranking"
+            app:destination="@id/nav_ranking"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
 </navigation>
