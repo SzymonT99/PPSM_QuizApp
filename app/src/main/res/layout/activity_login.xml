@@ -72,7 +72,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/input_data_background"
 
         android:hint="Login"
         android:inputType="text"
@@ -93,7 +93,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/input_data_background"
 
         android:hint="Hasło"
         android:inputType="textPassword"

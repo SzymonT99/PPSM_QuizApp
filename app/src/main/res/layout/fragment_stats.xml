@@ -4,175 +4,208 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D6D6D6"
     tools:context=".ui.fragments.StatsFragment">
-
-    <TextView
-        android:id="@+id/user_name"
-        android:layout_width="138dp"
-        android:layout_height="18dp"
-        android:text="Nazwa Gracza"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/logoImage"
-        app:layout_constraintEnd_toEndOf="@+id/logoImage"
-        app:layout_constraintHorizontal_bias="0.74"
-        app:layout_constraintStart_toStartOf="@+id/logoImage"
-        app:layout_constraintTop_toTopOf="@+id/logoImage"
-        app:layout_constraintVertical_bias="0.495" />
 
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="365dp"
         android:layout_height="150dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/stats"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/stats_user_layout"
         app:layout_constraintBottom_toTopOf="@+id/text_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.288" />
 
+    <ImageView
+        android:id="@+id/userLogo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_account_box_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/logoImage"
+        app:layout_constraintStart_toStartOf="@+id/logoImage"
+        app:layout_constraintTop_toTopOf="@+id/logoImage"
+        app:layout_constraintVertical_bias="0.4" />
+
     <TextView
-        android:id="@+id/Stats_Games_Total"
+        android:id="@+id/user_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Liczba gier:"
-        android:textSize="25sp"
+        android:text="Nazwa gracza"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/logoImage"
+        app:layout_constraintEnd_toEndOf="@+id/logoImage"
+        app:layout_constraintStart_toEndOf="@+id/userLogo"
+        app:layout_constraintTop_toTopOf="@+id/logoImage" />
+
+    <ImageView
+        android:id="@+id/stats_background"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/stats_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImage"
-        app:layout_constraintVertical_bias="0.044" />
-
-    <TextView
-        android:id="@+id/Stats_Games_Total_Value"
-        android:layout_width="408dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
-        android:text="79"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Games_Total"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/Stats_Correct_Answers"
-        android:layout_width="wrap_content"
+        android:id="@+id/stats_current_rank_value"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Poprawne odpowiedzi:"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.146"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Games_Total_Value"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/Stats_Correct_Answers_Value"
-        android:layout_width="408dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
-        android:text="79"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Correct_Answers"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/Stats_Incorrect_Answers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Niepoprawne odpowiedzi:"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Correct_Answers_Value"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/Stats_Incorrect_Answers_Value"
-        android:layout_width="408dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
-        android:text="79"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Incorrect_Answers"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/Stats_Questions_Added"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Dodane pytania:"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Incorrect_Answers_Value"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/Stats_Questions_Added_Value"
-        android:layout_width="408dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
-        android:text="12"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Questions_Added"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/Stats_Current_Rank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Obecny ranking:"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Questions_Added_Value"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/Stats_Current_Rank_Value"
-        android:layout_width="408dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="316dp"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:gravity="center"
         android:text="3"
-        android:textAlignment="center"
+        android:textColor="#B70F0A"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Stats_Current_Rank"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/stats_game_total" />
+
+    <TextView
+        android:id="@+id/stats_current_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="324dp"
+        android:fontFamily="@font/roboto"
+        android:text="Obecny ranking:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/stats_background"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="@+id/stats_background"
+        app:layout_constraintTop_toTopOf="@+id/stats_background" />
+
+    <TextView
+        android:id="@+id/stats_question_added_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="236dp"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:gravity="center"
+        android:text="12"
+        android:textColor="#B70F0A"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_game_total" />
+
+    <TextView
+        android:id="@+id/stats_questions_added"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="248dp"
+        android:fontFamily="@font/roboto"
+        android:text="Liczba dodanych pytań:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/stats_background"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="@+id/stats_background"
+        app:layout_constraintTop_toTopOf="@+id/stats_background" />
+
+    <TextView
+        android:id="@+id/stats_incorrect_answers_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="#B70F0A"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_game_total" />
+
+    <TextView
+        android:id="@+id/stats_incorrect_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
+        android:fontFamily="@font/roboto"
+        android:text="Niepoprawne odpowiedzi: "
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/stats_background"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="@+id/stats_background"
+        app:layout_constraintTop_toTopOf="@+id/stats_background" />
+
+    <TextView
+        android:id="@+id/stats_correct_answers_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:gravity="center"
+        android:text="70"
+        android:textColor="#B70F0A"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_game_total" />
+
+    <TextView
+        android:id="@+id/stats_correct_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/roboto"
+        android:text="Poprawne odpowiedzi: "
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/stats_background"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/stats_background"
+        app:layout_constraintTop_toTopOf="@+id/stats_background" />
+
+    <TextView
+        android:id="@+id/stats_game_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
+        android:text="Liczba gier: "
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/stats_background"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="@+id/stats_background"
+        app:layout_constraintTop_toTopOf="@+id/stats_background" />
+
+    <TextView
+        android:id="@+id/stats_game_total_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:gravity="center"
+        android:text="17"
+        android:textColor="#B70F0A"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_game_total" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

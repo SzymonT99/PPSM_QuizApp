@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D6D6D6"
     tools:context=".ui.fragments.AccountFragment">
 
     <TextView
@@ -12,7 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
         android:text="Zmień hasło"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,36 +27,40 @@
 
     <EditText
         android:id="@+id/input_old_passwd"
-        android:layout_width="260dp"
-        android:layout_height="47dp"
+        android:layout_width="270dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
+        android:background="@drawable/input_data_background"
         android:hint="Stare hasło"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:paddingStart="18sp"
+        android:textColorHint="#ACACAC"
+        android:textSize="17sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.345"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_passwd"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.016" />
+
 
     <EditText
         android:id="@+id/input_new_passwd"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
+        android:background="@drawable/input_data_background"
         android:hint="Nowe hasło"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:paddingStart="18sp"
+        android:textColorHint="#ACACAC"
+        android:textSize="17sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.345"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_old_passwd"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintVertical_bias="0.016" />
 
     <TextView
         android:id="@+id/change_login"
@@ -61,7 +68,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto"
         android:text="Zmień login"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,35 +82,39 @@
 
     <EditText
         android:id="@+id/input_old_login"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
+        android:background="@drawable/input_data_background"
         android:hint="Stary login"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:paddingStart="18sp"
+        android:textColorHint="#ACACAC"
+        android:textSize="17sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.345"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_login"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.033" />
 
     <EditText
-        android:id="@+id/input_new_login"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/input_password_new_login"
+        android:layout_width="270dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
-        android:hint="Powtórz hasło"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:background="@drawable/input_data_background"
+        android:hint="Podaj hasło"
+        android:paddingStart="18sp"
+        android:textColorHint="#ACACAC"
+        android:textSize="17sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.345"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_old_login"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.035" />
 
     <TextView
         android:id="@+id/delete_acc"
@@ -109,7 +122,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto"
         android:text="Usuń konto"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,56 +136,70 @@
 
     <EditText
         android:id="@+id/delete_confirm_passwd"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
+        android:background="@drawable/input_data_background"
         android:hint="Podaj hasło"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:paddingStart="18sp"
+        android:textColorHint="#ACACAC"
+        android:textSize="17sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.345"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delete_acc"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.089" />
 
     <Button
         android:id="@+id/Confirm_Passwd_Change_Btn"
-        android:layout_width="130dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Zapisz zmianę"
+        android:background="@drawable/button_layout"
+        android:text="OK"
+        android:textAllCaps="false"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_new_passwd"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <Button
         android:id="@+id/Confirm_Login_Change_Btn"
-        android:layout_width="130dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Zapisz zmianę"
+        android:background="@drawable/button_layout"
+        android:text="OK"
+        android:textAllCaps="false"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_new_login"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/input_password_new_login"
+        app:layout_constraintVertical_bias="0.033" />
 
     <Button
         android:id="@+id/Confirm_Delete_Acc_Btn"
-        android:layout_width="130dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Usuń"
+        android:background="@drawable/button_layout"
+        android:drawableLeft="@drawable/ic_delete_black_24dp"
+        android:drawablePadding="1000dp"
+        android:gravity="center|center_horizontal"
+        android:paddingLeft="43dp"
+        android:textAllCaps="false"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delete_confirm_passwd"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.101" />
 </androidx.constraintlayout.widget.ConstraintLayout>

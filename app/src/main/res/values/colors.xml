@@ -8,4 +8,6 @@
     <color name="questionBorder">#631878</color>
     <color name="questionBackground">#cfbad5</color>
     <color name="buttonMainPage">#A42E1572</color>
+    <color name="statsUser">#B2B0B6</color>
+    <color name="statsBackground">#899E7E</color>
 </resources>

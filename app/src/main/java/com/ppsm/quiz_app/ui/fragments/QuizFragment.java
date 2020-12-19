@@ -173,6 +173,8 @@ public class QuizFragment extends Fragment {
                 .build();
         jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
 
+        getQuiz();
+
         return root;
     }
 
@@ -258,7 +260,6 @@ public class QuizFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getQuiz();
         handler.postDelayed(runnable = new Runnable() {
             public void run() {
                 handler.postDelayed(runnable, 1000);

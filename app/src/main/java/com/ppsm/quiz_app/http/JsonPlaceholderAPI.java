@@ -2,9 +2,12 @@ package com.ppsm.quiz_app.http;
 
 import com.ppsm.quiz_app.model.CreateUserDto;
 import com.ppsm.quiz_app.model.Question;
+import com.ppsm.quiz_app.model.QuizResult;
+import com.ppsm.quiz_app.model.Statistics;
 import com.ppsm.quiz_app.model.UserAutorizationDto;
 import com.ppsm.quiz_app.model.UserResultDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,5 +29,11 @@ public interface JsonPlaceholderAPI {
 
     @POST("quiz/save-result")
     Call<Void> saveResult(@Body UserResultDto result);
+
+    @GET("quiz/ranking")
+    Call<ArrayList<QuizResult>> getRanking();
+
+    @GET("quiz/statistics/{nick}")
+    Call<Statistics> getStats(@Path("nick") String nick);
 
 }
