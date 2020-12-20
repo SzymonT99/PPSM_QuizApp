@@ -63,7 +63,7 @@ public class UserResultFragment extends Fragment {
         dateText = root.findViewById(R.id.date_vaue);
 
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         sdf.setTimeZone(TimeZone.getTimeZone("Europe/Warsaw"));
         String dateString = sdf.format(date);
 

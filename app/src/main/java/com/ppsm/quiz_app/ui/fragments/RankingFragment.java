@@ -1,5 +1,6 @@
 package com.ppsm.quiz_app.ui.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class RankingFragment extends Fragment {
 
@@ -77,7 +80,7 @@ public class RankingFragment extends Fragment {
                     System.out.println("Server Code: " + response.code());
                 }
                 rankingList = response.body();
-                mAdapter = new RankingAdapter(rankingList);
+                mAdapter = new RankingAdapter(rankingList, getLogin());
                 mRecyclerView.setLayoutManager(mLayoutManager);
                 mRecyclerView.setAdapter(mAdapter);
                 mRecyclerView.setHasFixedSize(true);
@@ -91,7 +94,9 @@ public class RankingFragment extends Fragment {
             }
         });
 
-
-
+    }
+    private String getLogin() {
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        return sharedPreferences.getString("LOGIN", "None");
     }
 }

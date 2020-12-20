@@ -6,24 +6,16 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.internal.bind.DateTypeAdapter;
 import com.ppsm.quiz_app.MainActivity;
 import com.ppsm.quiz_app.R;
 import com.ppsm.quiz_app.http.JsonPlaceholderAPI;
 import com.ppsm.quiz_app.model.UserAutorizationDto;
 import com.ppsm.quiz_app.ui.admin.AdminActivity;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         Button registerButton = findViewById(R.id.register_btn);
 
@@ -70,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
             UserAutorizationDto userAutorization = new UserAutorizationDto(loginText.getText().toString(), passwordText.getText().toString());
 
-            Call<String> call = jsonPlaceholderAPI.getUser(userAutorization);
+            Call<String> call = jsonPlaceholderAPI.getUserRole(userAutorization);
             call.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {

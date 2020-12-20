@@ -46,6 +46,7 @@ public class QuizFragment extends Fragment {
     private Boolean isSafe = false;
     private int[] halfAnswers = null;
     private Boolean serverConnect;
+    private Integer correctAnswers = 0;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -224,21 +225,23 @@ public class QuizFragment extends Fragment {
 
             if (questionsList.get(currentQuestionId).getAnswers().get(halfAnswers[id]).isCorrect()) {
                 points += questionsList.get(currentQuestionId).getPoints();
+                correctAnswers++;
                 halfAnswers = null;
                 goNextQuestion();
             }
             else {
                 Bundle bundle = new Bundle();
-                bundle.putInt("correctAnswers", currentQuestionId);
+                bundle.putInt("correctAnswers", correctAnswers);
                 bundle.putInt("totalQuestions", questionsList.size());
                 bundle.putInt("points", points);
-                Navigation.findNavController(viewG).navigate(R.id.action_nav_quiz_to_nav_user_result);
+                Navigation.findNavController(viewG).navigate(R.id.action_nav_quiz_to_nav_user_result, bundle);
             }
 
         }
         else {
             if (questionsList.get(currentQuestionId).getAnswers().get(id).isCorrect()) {
                 points += questionsList.get(currentQuestionId).getPoints();
+                correctAnswers++;
                 goNextQuestion();
             } else {
                 if (isSafe) {
@@ -246,7 +249,7 @@ public class QuizFragment extends Fragment {
                     isSafe = false;
                 } else {
                     Bundle bundle = new Bundle();
-                    bundle.putInt("correctAnswers", currentQuestionId);
+                    bundle.putInt("correctAnswers", correctAnswers);
                     bundle.putInt("totalQuestions", questionsList.size());
                     bundle.putInt("points", points);
                     Navigation.findNavController(viewG).navigate(R.id.action_nav_quiz_to_nav_user_result, bundle);
@@ -286,7 +289,7 @@ public class QuizFragment extends Fragment {
                 }
                 else {
                     Bundle bundle = new Bundle();
-                    bundle.putInt("correctAnswers", currentQuestionId);
+                    bundle.putInt("correctAnswers", correctAnswers);
                     bundle.putInt("totalQuestions", questionsList.size());
                     bundle.putInt("points", points);
                     Navigation.findNavController(viewG).navigate(R.id.action_nav_quiz_to_nav_user_result, bundle);
@@ -313,7 +316,7 @@ public class QuizFragment extends Fragment {
             answerDButton.setText(questionsList.get(currentQuestionId).getAnswers().get(3).getAnswer());
         } else {
             Bundle bundle = new Bundle();
-            bundle.putInt("correctAnswers", currentQuestionId);
+            bundle.putInt("correctAnswers", correctAnswers);
             bundle.putInt("totalQuestions", questionsList.size());
             bundle.putInt("points", points);
             Navigation.findNavController(viewG).navigate(R.id.action_nav_quiz_to_nav_user_result, bundle);

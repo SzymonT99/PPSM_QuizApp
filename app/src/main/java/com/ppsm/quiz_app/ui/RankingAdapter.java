@@ -2,6 +2,9 @@ package com.ppsm.quiz_app.ui;
 
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +22,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import static android.content.Context.MODE_PRIVATE;
+import static java.security.AccessController.getContext;
+
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingViewHolder> {
 
     public ArrayList<QuizResult> rankingList;
+    public String currentLogin;
 
-    public RankingAdapter(ArrayList<QuizResult> rankingList) {
+    public RankingAdapter(ArrayList<QuizResult> rankingList, String currentLogin) {
         this.rankingList = rankingList;
+        this.currentLogin = currentLogin;
     }
 
     @NonNull
@@ -46,20 +54,29 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         int currentRanking = position + 1;
         holder.position.setText(Integer.toString(currentRanking));
         holder.userName.setText(currentItem.getUserName());
-        holder.points.setText(currentItem.getPoints().toString());
+        if (currentItem.getUserName().equals(currentLogin)) holder.userName.setTextColor(Color.RED);
+
+        holder.points.setText(currentItem.getPoints().toString() + " pkt.");
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-dd", Locale.ENGLISH);
         String formattedDate = simpleDateFormat.format(currentItem.getDate());
         holder.date.setText(formattedDate);
 
-        if (currentRanking == 1) {
-            holder.podiumImage.setBackgroundResource(R.drawable.master);
+        if (currentRanking == 1) { holder.podiumImage.setBackgroundResource(R.drawable.master);
+            holder.podiumImage.setImageResource(R.drawable.master);
+            holder.podiumImage.setMinimumWidth(40);
+            holder.podiumImage.setMinimumHeight(40);
         }
         if (currentRanking == 2) {
-            holder.podiumImage.setBackgroundResource(R.drawable.silver);
+            holder.podiumImage.setImageResource(R.drawable.silver);
+            holder.podiumImage.setMinimumWidth(40);
+            holder.podiumImage.setMinimumHeight(40);
+
         }
         if (currentRanking == 3) {
-            holder.podiumImage.setBackgroundResource(R.drawable.bronze);
+            holder.podiumImage.setImageResource(R.drawable.bronze);
+            holder.podiumImage.setMinimumWidth(40);
+            holder.podiumImage.setMinimumHeight(40);
         }
     }
 
@@ -87,4 +104,5 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
 
         }
     }
+
 }

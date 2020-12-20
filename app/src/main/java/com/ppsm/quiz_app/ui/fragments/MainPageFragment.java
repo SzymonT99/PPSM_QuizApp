@@ -42,9 +42,10 @@ public class MainPageFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         final String userName = intent.getStringExtra("LOGIN");
-        userNameText.setText(userName);
 
         saveData(userName);
+
+        userNameText.setText(getLogin());
 
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +84,11 @@ public class MainPageFragment extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("LOGIN", output);
         editor.apply();
+    }
+
+    private String getLogin() {
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        return sharedPreferences.getString("LOGIN", "None");
     }
 
 }

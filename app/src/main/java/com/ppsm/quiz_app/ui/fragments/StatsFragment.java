@@ -76,11 +76,6 @@ public class StatsFragment extends Fragment {
                 }
                 System.out.println("Server Code: " + response.code());
                 stats = response.body();
-                System.out.println("games "+stats.getGamesNumber());
-                System.out.println("correct "+stats.getCorrectAnswer());
-                System.out.println("incorrect "+stats.getIncorrectAnswer());
-                System.out.println("added "+stats.getAddedQuestions());
-                System.out.println("rank "+stats.getCurrentRank());
 
                 numberGamesText.setText(stats.getGamesNumber().toString());
                 correctAnswText.setText(stats.getCorrectAnswer().toString());
