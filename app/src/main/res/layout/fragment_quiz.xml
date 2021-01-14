@@ -205,7 +205,6 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/helped_button"
         android:drawableStart="@drawable/ic_sync_black_24dp"
-        android:drawableEnd="@color/design_default_color_background"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/safety_btn"

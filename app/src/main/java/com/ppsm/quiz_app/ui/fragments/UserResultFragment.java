@@ -89,7 +89,7 @@ public class UserResultFragment extends Fragment {
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.101:8080/")
+                .baseUrl("http://192.168.0.102:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         JsonPlaceholderAPI jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);

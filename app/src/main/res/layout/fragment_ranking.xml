@@ -23,7 +23,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="0dp"
         android:layout_height="559dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="50dp"
         android:background="#D6D6D6"
         android:padding="4dp"
         android:scrollbars="vertical"

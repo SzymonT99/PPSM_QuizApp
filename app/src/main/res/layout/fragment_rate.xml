@@ -8,21 +8,23 @@
     tools:context=".ui.fragments.RateFragment">
 
     <TextView
-        android:id="@+id/authors_speech"
-        android:layout_width="280dp"
-        android:layout_height="180dp"
-        android:background="#aedd94"
+        android:id="@+id/rate_info"
+        android:layout_width="316dp"
+        android:layout_height="183dp"
+        android:background="@drawable/info_layout"
+        android:fontFamily="@font/asap_bold"
         android:gravity="center"
-        android:text="Jeśli podoba Ci się nasza aplikacja, prosimy o pozytywną ocenę poniżej ;)"
+        android:text="Jeśli podoba Ci się nasza \naplikacja, prosimy o pozytywną ocenę poniżej ;)"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintVertical_bias="0.151" />
 
     <TextView
         android:id="@+id/bad_count"
@@ -30,16 +32,18 @@
         android:layout_height="40dp"
         android:layout_marginStart="85dp"
         android:layout_marginTop="51dp"
-        android:background="#b70f0a"
+        android:background="@drawable/bad_rate_box"
+        android:fontFamily="@font/quicksand_bold"
         android:gravity="center"
         android:text="0"
         android:textAlignment="center"
+        android:textColor="#C25551"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authors_speech"
+        app:layout_constraintTop_toBottomOf="@+id/rate_info"
         app:layout_constraintVertical_bias="0.012" />
 
     <TextView
@@ -48,27 +52,30 @@
         android:layout_height="40dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="85dp"
-        android:background="#aedd94"
+        android:background="@drawable/good_rate_box"
+        android:fontFamily="@font/quicksand_bold"
         android:gravity="center"
         android:text="500"
         android:textAlignment="center"
+        android:textColor="#7F9F6F"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authors_speech"
+        app:layout_constraintTop_toBottomOf="@+id/rate_info"
         app:layout_constraintVertical_bias="0.012" />
 
     <Button
-        android:id="@+id/Rate_well"
+        android:id="@+id/rate_well_btn"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="21dp"
-        android:background="@drawable/good_button"
-        android:enabled="false"
+        android:background="@drawable/rate_button"
+        android:drawableRight="@drawable/ic_baseline_thumb_up_24"
         android:gravity="center_vertical|center_horizontal"
+        android:paddingEnd="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.765"
@@ -77,19 +84,32 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/Rate_worse"
+        android:id="@+id/rate_worse_btn"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="21dp"
-        android:background="@drawable/bad_button"
-        android:enabled="false"
+        android:background="@drawable/rate_button"
+        android:drawableRight="@drawable/ic_baseline_thumb_down_24"
         android:gravity="center_vertical|center_horizontal"
+        android:paddingEnd="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bad_count"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/emoticon_view"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/emoticon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rate_well_btn"
+        app:layout_constraintVertical_bias="0.31" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

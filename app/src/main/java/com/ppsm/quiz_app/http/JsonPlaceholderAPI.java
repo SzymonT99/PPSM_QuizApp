@@ -7,8 +7,10 @@ import com.ppsm.quiz_app.model.CreateUserDto;
 import com.ppsm.quiz_app.model.DeleteUserDto;
 import com.ppsm.quiz_app.model.Question;
 import com.ppsm.quiz_app.model.QuizResult;
+import com.ppsm.quiz_app.model.RatesDto;
 import com.ppsm.quiz_app.model.Statistics;
 import com.ppsm.quiz_app.model.UserAutorizationDto;
+import com.ppsm.quiz_app.model.UserRateDto;
 import com.ppsm.quiz_app.model.UserResultDto;
 
 import java.util.ArrayList;
@@ -54,5 +56,11 @@ public interface JsonPlaceholderAPI {
 
     @POST("quiz/add-question")
     Call<Void> addQuestion(@Body CreateQuestionDto question);
+
+    @GET("quiz/rates")
+    Call<RatesDto> getAllRates();
+
+    @POST("quiz/add-rate")
+    Call<Boolean> addRate(@Body UserRateDto userRateDto);
 
 }

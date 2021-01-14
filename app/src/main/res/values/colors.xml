@@ -10,4 +10,11 @@
     <color name="buttonMainPage">#A42E1572</color>
     <color name="statsUser">#B2B0B6</color>
     <color name="statsBackground">#899E7E</color>
+    <color name="infoInnner">#9CB98D</color>
+    <color name="infoOuter">#B8C2A8</color>
+    <color name="bad_rate_background">#CC9A98</color>
+    <color name="bad_rate_border">#B70F0A</color>
+    <color name="good_rate_background">#B3C4AA</color>
+    <color name="good_rate_border">#4C7A34</color>
+
 </resources>
