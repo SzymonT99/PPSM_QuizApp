@@ -51,7 +51,7 @@ public class VerifyQuestionActivity extends AppCompatActivity {
         points = findViewById(R.id.points_value_vf);
         category = findViewById(R.id.category_value_vf);
 
-        Intent intent = getIntent();
+        Intent intent = getIntent().setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);;
         Question receiveQuestion = (Question) intent.getSerializableExtra("CURRENT_QUESTION");
 
         questionId = receiveQuestion.getId();
@@ -85,7 +85,8 @@ public class VerifyQuestionActivity extends AppCompatActivity {
         }
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.102:8080/")
+                //.baseUrl("http://192.168.0.102:8080/")
+                .baseUrl("http://192.168.1.115:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
@@ -111,7 +112,7 @@ public class VerifyQuestionActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.code() == 200) {
-                        Intent intent = new Intent(VerifyQuestionActivity.this, AdminActivity.class);
+                        Intent intent = new Intent(VerifyQuestionActivity.this, AdminActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);;
                         startActivity(intent);
                         Toast toast = Toast.makeText(getApplicationContext(), "Zaakceptowano pytanie", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -138,7 +139,7 @@ public class VerifyQuestionActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Question> call, Response<Question> response) {
                 if (response.code() == 200) {
-                    Intent intent = new Intent(VerifyQuestionActivity.this, AdminActivity.class);
+                    Intent intent = new Intent(VerifyQuestionActivity.this, AdminActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);;
                     startActivity(intent);
                     Toast toast = Toast.makeText(getApplicationContext(), "Usunięto pytanie", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
@@ -165,7 +166,7 @@ public class VerifyQuestionActivity extends AppCompatActivity {
     }
 
     public void backToQuestions(View view) {
-        Intent intent = new Intent(VerifyQuestionActivity.this, AdminActivity.class);
+        Intent intent = new Intent(VerifyQuestionActivity.this, AdminActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);;
         startActivity(intent);
     }
 }

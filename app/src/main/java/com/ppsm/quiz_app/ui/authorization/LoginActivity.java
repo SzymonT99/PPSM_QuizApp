@@ -51,7 +51,8 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.102:8080/")
+                //.baseUrl("http://192.168.0.102:8080/")
+                .baseUrl("http://192.168.1.115:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);

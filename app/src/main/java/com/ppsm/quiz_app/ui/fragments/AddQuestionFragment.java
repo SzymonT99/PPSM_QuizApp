@@ -69,7 +69,8 @@ public class AddQuestionFragment extends Fragment {
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.102:8080/")
+                //.baseUrl("http://192.168.0.102:8080/")
+                .baseUrl("http://192.168.1.115:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
@@ -86,10 +87,10 @@ public class AddQuestionFragment extends Fragment {
             int selectedID = radioGroup.getCheckedRadioButtonId();
             radioButton =  getActivity().findViewById(selectedID);
             int correctNumber;
-            if (radioButton.getText().equals("A")) correctNumber = 1;
-            if (radioButton.getText().equals("B")) correctNumber = 2;
-            if (radioButton.getText().equals("C")) correctNumber = 3;
-            else correctNumber = 4;
+            if (radioButton.getText().equals("A")) { correctNumber = 1; }
+            else if (radioButton.getText().equals("B")) { correctNumber = 2; }
+            else if (radioButton.getText().equals("C")) { correctNumber = 3; }
+            else { correctNumber = 4; }
 
             CreateQuestionDto createQuestionDto = new CreateQuestionDto(getLogin(), questionContent.getText().toString(),
                     answerA.getText().toString(), answerB.getText().toString(), answerC.getText().toString(),

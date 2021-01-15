@@ -77,6 +77,20 @@ public class AdminPanelAdapter extends RecyclerView.Adapter<AdminPanelAdapter.Ad
         }
     }
 
+    public void removeItem(int position) {
+        questionsList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Question item, int position) {
+        questionsList.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    public List<Question> getQuestionsList(){
+        return questionsList;
+    }
+
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
