@@ -1,6 +1,8 @@
 package com.ppsm.quiz_app.model;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable {
 
     private String answer;
     private boolean correct;

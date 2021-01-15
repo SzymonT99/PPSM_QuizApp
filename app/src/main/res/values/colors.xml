@@ -16,5 +16,6 @@
     <color name="bad_rate_border">#B70F0A</color>
     <color name="good_rate_background">#B3C4AA</color>
     <color name="good_rate_border">#4C7A34</color>
+    <color name="admin_info_box">#E6E6E6</color>
 
 </resources>

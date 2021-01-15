@@ -1,8 +1,9 @@
 package com.ppsm.quiz_app.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Question {
+public class Question implements Serializable {
 
     private Long id;
     private String content;
@@ -11,11 +12,12 @@ public class Question {
     private Integer seconds;
     private boolean available;
     private Integer points;
+    private String author;
 
     public Question() {
     }
 
-    public Question(Long id, String content, String category, List<Answer> answers, Integer seconds, boolean available, Integer points) {
+    public Question(Long id, String content, String category, List<Answer> answers, Integer seconds, boolean available, Integer points, String author) {
         this.id = id;
         this.content = content;
         this.category = category;
@@ -23,6 +25,7 @@ public class Question {
         this.seconds = seconds;
         this.available = available;
         this.points = points;
+        this.author = author;
     }
 
     public Long getId() {
@@ -79,5 +82,13 @@ public class Question {
 
     public void setPoints(Integer points) {
         this.points = points;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

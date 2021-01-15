@@ -1,6 +1,5 @@
 package com.ppsm.quiz_app.ui.fragments;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -12,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -22,8 +22,6 @@ import android.widget.Toast;
 import com.ppsm.quiz_app.R;
 import com.ppsm.quiz_app.http.JsonPlaceholderAPI;
 import com.ppsm.quiz_app.model.CreateQuestionDto;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

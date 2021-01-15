@@ -1,29 +1,20 @@
 package com.ppsm.quiz_app.ui;
 
-
 import android.annotation.SuppressLint;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.ppsm.quiz_app.R;
 import com.ppsm.quiz_app.model.QuizResult;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static android.content.Context.MODE_PRIVATE;
-import static java.security.AccessController.getContext;
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingViewHolder> {
 
@@ -52,7 +43,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         QuizResult currentItem = rankingList.get(position);
 
         int currentRanking = position + 1;
-        holder.position.setText(Integer.toString(currentRanking));
+        holder.position.setText(Integer.toString(currentRanking)+".");
         holder.userName.setText(currentItem.getUserName());
         if (currentItem.getUserName().equals(currentLogin)) holder.userName.setTextColor(Color.RED);
 

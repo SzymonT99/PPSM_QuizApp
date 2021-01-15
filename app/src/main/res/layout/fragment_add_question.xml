@@ -59,7 +59,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Answer_A_Btn"
         app:layout_constraintTop_toBottomOf="@+id/scrollView"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -79,7 +78,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Answer_C_Btn"
         app:layout_constraintTop_toBottomOf="@+id/input_answer_B"
         app:layout_constraintVertical_bias="0.003" />
 
@@ -99,12 +97,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Answer_D_Btn"
         app:layout_constraintTop_toBottomOf="@+id/input_answer_C"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/answer_c_"
+        android:id="@+id/answer_c"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
@@ -144,7 +141,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/answer_d_"
+        android:id="@+id/answer_d"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
@@ -198,7 +195,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Answer_B_Btn"
         app:layout_constraintTop_toBottomOf="@+id/input_answer_A"
         app:layout_constraintVertical_bias="0.0" />
 

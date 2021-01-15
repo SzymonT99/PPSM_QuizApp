@@ -8,6 +8,7 @@ import com.ppsm.quiz_app.model.DeleteUserDto;
 import com.ppsm.quiz_app.model.Question;
 import com.ppsm.quiz_app.model.QuizResult;
 import com.ppsm.quiz_app.model.RatesDto;
+import com.ppsm.quiz_app.model.SpecifyQuestionDto;
 import com.ppsm.quiz_app.model.Statistics;
 import com.ppsm.quiz_app.model.UserAutorizationDto;
 import com.ppsm.quiz_app.model.UserRateDto;
@@ -62,5 +63,11 @@ public interface JsonPlaceholderAPI {
 
     @POST("quiz/add-rate")
     Call<Boolean> addRate(@Body UserRateDto userRateDto);
+
+    @PUT("quiz/question-accepted/{id}")
+    Call<Void> acceptQuestion(@Path("id") Long id, @Body SpecifyQuestionDto specifyQuestionDto);
+
+    @DELETE("quiz/delete-question/{id}")
+    Call<Question> deleteQuestion(@Path("id") Long id);
 
 }
