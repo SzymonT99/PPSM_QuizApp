@@ -1,8 +1,11 @@
 package com.ppsm.quiz_app.ui.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,15 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.Toolbar;
-
-import com.ppsm.quiz_app.MainActivity;
 import com.ppsm.quiz_app.R;
 import com.ppsm.quiz_app.http.JsonPlaceholderAPI;
 import com.ppsm.quiz_app.model.ChangedUserLoginDto;
 import com.ppsm.quiz_app.model.ChangedUserPasswordDto;
 import com.ppsm.quiz_app.model.DeleteUserDto;
-import com.ppsm.quiz_app.model.UserAutorizationDto;
-import com.ppsm.quiz_app.ui.admin.AdminActivity;
 import com.ppsm.quiz_app.ui.authorization.LoginActivity;
 
 import retrofit2.Call;
@@ -77,21 +76,45 @@ public class AccountFragment extends Fragment {
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changePassword();
+                if (isNetworkConnected()){
+                    changePassword();
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    Toast.makeText(getContext(), "Brak połączenia z Internetem", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         changeLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeLogin();
+                if (isNetworkConnected()) {
+                    changeLogin();
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    Toast.makeText(getContext(), "Brak połączenia z Internetem", Toast.LENGTH_LONG).show();
+                    startActivity(intent);
+                }
             }
         });
 
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteAccount();
+               if (isNetworkConnected()) {
+                   deleteAccount();
+               }
+               else {
+                   Intent intent = new Intent(getActivity(), LoginActivity.class);
+                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                   Toast.makeText(getContext(), "Brak połączenia z Internetem", Toast.LENGTH_LONG).show();
+                   startActivity(intent);
+               }
             }
         });
 
@@ -100,7 +123,7 @@ public class AccountFragment extends Fragment {
 
 
     @SuppressLint("SetTextI18n")
-    private void changePassword() {
+    public void changePassword() {
 
         if (!changePasswordNew.getText().toString().equals("") && !changePasswordOld.getText().toString().equals("")){
 
@@ -140,7 +163,7 @@ public class AccountFragment extends Fragment {
     }
 
     @SuppressLint("SetTextI18n")
-    private void deleteAccount() {
+    public void deleteAccount() {
         if (!deleteAccountPassword.getText().toString().equals("")){
 
             DeleteUserDto deleteUserDto = new DeleteUserDto(getLogin(), deleteAccountPassword.getText().toString());
@@ -180,7 +203,7 @@ public class AccountFragment extends Fragment {
     }
 
     @SuppressLint("SetTextI18n")
-    private void changeLogin() {
+    public void changeLogin() {
 
         if (!changeLoginNew.getText().toString().equals("") && !changeLoginAuthorize.getText().toString().equals("")){
 
@@ -195,7 +218,7 @@ public class AccountFragment extends Fragment {
                         Toast toast = Toast.makeText(getContext(), "Zmieniono login", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
-                        saveData(changeLoginNew.getText().toString());
+                        saveData(changeLoginNew.getText().toString());              // zapisanie zmienionego hasła w pamięci
                         changeLoginNew.setText("");
                         changeLoginAuthorize.setText("");
                         warningChangeLogin.setText("");
@@ -219,17 +242,22 @@ public class AccountFragment extends Fragment {
         }
     }
 
-    private String getLogin() {
+    public String getLogin() {
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
         return sharedPreferences.getString("LOGIN", "None");
     }
 
-    private void saveData(String output) {
+    public void saveData(String output) {
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("LOGIN", output);
         editor.apply();
     }
 
+    public boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
 }

@@ -1,6 +1,10 @@
 package com.ppsm.quiz_app.ui.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -20,7 +24,10 @@ import androidx.navigation.Navigation;
 import com.ppsm.quiz_app.R;
 import com.ppsm.quiz_app.http.JsonPlaceholderAPI;
 import com.ppsm.quiz_app.model.Question;
+import com.ppsm.quiz_app.ui.authorization.LoginActivity;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -45,7 +52,6 @@ public class QuizFragment extends Fragment {
     private Button fiftyButton, rollButton, safetyButton;
     private Boolean isSafe = false;
     private int[] halfAnswers = null;
-    private Boolean serverConnect;
     private Integer correctAnswers = 0;
 
     @Override
@@ -81,32 +87,52 @@ public class QuizFragment extends Fragment {
         answerAButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (serverConnect) selectAnswer(0);
+                if (isNetworkConnected()) {
+                    selectAnswer(0);
+                }
+                else {
+                    backToLoginScreen();
+                }
             }
         });
         answerBButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (serverConnect) selectAnswer(1);
+                if (isNetworkConnected()) {
+                    selectAnswer(1);
+                }
+                else {
+                    backToLoginScreen();
+                }
             }
         });
         answerCButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (serverConnect) selectAnswer(2);
+                if (isNetworkConnected()) {
+                    selectAnswer(2);
+                }
+                else {
+                    backToLoginScreen();
+                }
             }
         });
         answerDButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (serverConnect) selectAnswer(3);
+                if (isNetworkConnected()) {
+                    selectAnswer(3);
+                }
+                else {
+                    backToLoginScreen();
+                }
             }
         });
 
         fiftyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (serverConnect) {
+                if (isNetworkConnected()) {
                     int correctAnswerId = 0;
 
                     for (int i = 0; i < 4; i++) {
@@ -144,15 +170,21 @@ public class QuizFragment extends Fragment {
 
                     fiftyButton.setEnabled(false);                  // koła ratunkowe
                 }
+                else {
+                    backToLoginScreen();
+                }
             }
         });
 
         safetyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (serverConnect) {
+                if (isNetworkConnected()) {
                     isSafe = true;
                     safetyButton.setEnabled(false);
+                }
+                else {
+                    backToLoginScreen();
                 }
             }
         });
@@ -160,9 +192,12 @@ public class QuizFragment extends Fragment {
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (serverConnect) {
+                if (isNetworkConnected()) {
                     goNextQuestion();
                     rollButton.setEnabled(false);
+                }
+                else {
+                    backToLoginScreen();
                 }
             }
         });
@@ -174,13 +209,18 @@ public class QuizFragment extends Fragment {
                 .build();
         jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
 
-        getQuiz();
+        if (isNetworkConnected()) {
+            getQuiz();
+        }
+        else {
+            backToLoginScreen();
+        }
 
         return root;
     }
 
 
-    private void getQuiz() {
+    public void getQuiz() {
 
         Call<List<Question>> call = jsonPlaceholderAPI.getQuestions(true);
         call.enqueue(new Callback<List<Question>>() {
@@ -192,6 +232,7 @@ public class QuizFragment extends Fragment {
                 }
 
                 questionsList = response.body();
+                questionsList = randomizeQuestions(questionsList);          // losowanie kolejności pytań
                 currentQuestionId = 0;
                 seconds = questionsList.get(0).getSeconds();
                 points = 0;
@@ -204,27 +245,53 @@ public class QuizFragment extends Fragment {
                 answerBButton.setText(questionsList.get(0).getAnswers().get(1).getAnswer());
                 answerCButton.setText(questionsList.get(0).getAnswers().get(2).getAnswer());
                 answerDButton.setText(questionsList.get(0).getAnswers().get(3).getAnswer());
-                serverConnect = true;
             }
 
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
                 System.out.println("failure");
                 System.out.println(t.getMessage());
-                serverConnect = false;
-                Toast.makeText(getContext(), "Brak połączenia z serverem", Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    private void selectAnswer(Integer id) {
+    public List<Question> randomizeQuestions(List<Question> unsortedQuestions) {
+
+        List<Question> randomizeList = new ArrayList<>();
+
+        int currentPointWeight = 1;
+        List<Question> tmpList = new ArrayList<>();
+        for (int i = 0; i < unsortedQuestions.size(); i++) {
+            if (unsortedQuestions.get(i).getPoints() == currentPointWeight){
+                tmpList.add(unsortedQuestions.get(i));
+            }
+            else {
+                currentPointWeight++;
+                Collections.shuffle(tmpList);
+                for (Question question : tmpList) {
+                    randomizeList.add(question);
+                }
+                tmpList.clear();
+                if (i + 1 == unsortedQuestions.size()) {
+                    randomizeList.add(unsortedQuestions.get(i));
+                }
+                else {
+                    tmpList.add(unsortedQuestions.get(i));
+                }
+            }
+        }
+
+        return randomizeList;
+    }
+
+    public void selectAnswer(Integer id) {
 
         if (halfAnswers != null) {
             answerCButton.setEnabled(true);
             answerDButton.setEnabled(true);
 
             if (questionsList.get(currentQuestionId).getAnswers().get(halfAnswers[id]).isCorrect()) {
-                points += questionsList.get(currentQuestionId).getPoints();
+                points += questionsList.get(currentQuestionId).getPoints();             // poprawne wskazanie jednej z dwóch odp.
                 correctAnswers++;
                 halfAnswers = null;
                 goNextQuestion();
@@ -272,10 +339,12 @@ public class QuizFragment extends Fragment {
     }
 
 
-    private void manageQuiz() {
+    @SuppressLint("SetTextI18n")
+    public void manageQuiz() {
 
-        if (!serverConnect) {
+        if (!isNetworkConnected()) {
             handler.removeCallbacks(runnable);
+            backToLoginScreen();
         }
         else {
             if (seconds > 0) {
@@ -283,8 +352,14 @@ public class QuizFragment extends Fragment {
                 timeText.setText(seconds.toString());
             }
             else {
+                if (halfAnswers != null) {
+                    answerCButton.setEnabled(true);
+                    answerDButton.setEnabled(true);
+                    halfAnswers = null;
+                }
+
                 if (isSafe) {
-                    goNextQuestion();
+                    goNextQuestion();           // wykorzystanie koła ratunkowego - chroniącego przed podaniem błędnej odp.
                     isSafe = false;
                 }
                 else {
@@ -300,7 +375,7 @@ public class QuizFragment extends Fragment {
     }
 
     @SuppressLint("SetTextI18n")
-    private void goNextQuestion() {
+    public void goNextQuestion() {
         if (currentQuestionId + 1 != questionsList.size()) {
 
             currentQuestionId++;
@@ -323,10 +398,22 @@ public class QuizFragment extends Fragment {
         }
     }
 
-
     @Override
     public void onStop() {
         super.onStop();
         handler.removeCallbacks(runnable);
+    }
+
+    public void backToLoginScreen() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        Toast.makeText(getContext(), "Brak połączenia z Internetem", Toast.LENGTH_LONG).show();
+    }
+
+    public boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

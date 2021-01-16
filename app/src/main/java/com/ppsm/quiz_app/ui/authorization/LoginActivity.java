@@ -3,7 +3,11 @@ package com.ppsm.quiz_app.ui.authorization;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private JsonPlaceholderAPI jsonPlaceholderAPI;
     private EditText loginText, passwordText;
-    private TextView warningText;
+    private TextView warningText, internetWarning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +40,15 @@ public class LoginActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        Button registerButton = findViewById(R.id.register_btn);
+        final Button registerButton = findViewById(R.id.register_btn);
+        final Button loginButton = findViewById(R.id.login_btn);
 
         loginText = findViewById(R.id.input_login);
         passwordText = findViewById(R.id.input_password);
         warningText = findViewById(R.id.warning);
+        internetWarning = findViewById(R.id.internet_warning);
+
+        loginText.setText(getLogin());          // zapamiętywanie nazwy użytkownika w panelu logowania
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +63,38 @@ public class LoginActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                if(!isNetworkConnected()) {
+                                    internetWarning.setVisibility(View.VISIBLE);
+                                    loginText.setEnabled(false);
+                                    passwordText.setEnabled(false);
+                                    registerButton.setEnabled(false);
+                                    loginButton.setEnabled(false);
+                                }
+                                else {
+                                    internetWarning.setVisibility(View.GONE);
+                                    loginText.setEnabled(true);
+                                    passwordText.setEnabled(true);
+                                    registerButton.setEnabled(true);
+                                    loginButton.setEnabled(true);
+                                }
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                    System.out.println(e.getLocalizedMessage());
+                }
+            }
+        };
+        thread.start();
     }
 
     @SuppressLint("SetTextI18n")
@@ -69,23 +109,25 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
 
+                    String currentLogin = loginText.getText().toString();
                     if (response.code() == 200) {
                         String role = response.body();
                         if (role.equals("ROLE_USER")){
-                            String currentLogin = loginText.getText().toString();
+                            saveData(currentLogin);
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("LOGIN", currentLogin);
                             startActivity(intent);
                         }
 
                         if (role.equals("ROLE_ADMIN")){
+                            saveData(currentLogin);
                             Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
                             startActivity(intent);
                         }
                         return;
                     }
                     if (response.code() == 401) {
-                        warningText.setText("Nie poprawny login lub hasło");
+                        warningText.setText("Niepoprawny login lub hasło");
                         return;
                     }
                     if (response.code() == 403) {
@@ -106,4 +148,21 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    public boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    public String getLogin() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        return sharedPreferences.getString("LOGIN", "");
+    }
+
+    public void saveData(String output) {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("LOGIN", output);
+        editor.apply();
+    }
 }

@@ -41,8 +41,8 @@ public class AdminPanelAdapter extends RecyclerView.Adapter<AdminPanelAdapter.Ad
         int currentIndex = position + 1;
         holder.index.setText(Integer.toString(currentIndex)+".");
         holder.author.setText(currentItem.getAuthor());
-        holder.questionContent.setText(currentItem.getContent().length() > 56
-                ? currentItem.getContent().substring(0,56) + "..."
+        holder.questionContent.setText(currentItem.getContent().length() > 75
+                ? currentItem.getContent().substring(0,75) + "..."
                 : currentItem.getContent());
 
     }
@@ -75,6 +75,20 @@ public class AdminPanelAdapter extends RecyclerView.Adapter<AdminPanelAdapter.Ad
         public void onClick(View v) {
             onItemClickListener.onItemClick(getAdapterPosition());
         }
+    }
+
+    public void removeItem(int position) {
+        questionsList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Question item, int position) {
+        questionsList.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    public List<Question> getQuestionsList(){
+        return questionsList;
     }
 
     public interface OnItemClickListener {

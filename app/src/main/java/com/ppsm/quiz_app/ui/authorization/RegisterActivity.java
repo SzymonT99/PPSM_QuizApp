@@ -3,7 +3,10 @@ package com.ppsm.quiz_app.ui.authorization;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -47,8 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    public void registerUser(final View view) {
-
+    public void register() {
         if (!emailText.getText().toString().equals("") && !loginText.getText().toString().equals("")
                 && !passwordText.getText().toString().equals("") && !repeatedPasswordText.getText().toString().equals("")) {
 
@@ -57,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Call<Void> call = jsonPlaceholderAPI.registerUser(user);
                 call.enqueue(new Callback<Void>() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
 
@@ -73,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                             return;
                         }
                         else {      // BAD_REQUEST
-                            warningText.setText("Nie poprawny email lub hasło (wymagane min. 10 znaków)");
+                            warningText.setText("Niepoprawny email lub hasło (wymagane min. 10 znaków)");
                             return;
                         }
                     }
@@ -92,5 +95,24 @@ public class RegisterActivity extends AppCompatActivity {
         else {
             warningText.setText("Należy uzupełnić wszystkie pola");
         }
+    }
+
+
+    public void registerUser(final View view) {
+
+        if (isNetworkConnected()) {
+            register();
+        }
+        else {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, "Brak połączenia z Internetem", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

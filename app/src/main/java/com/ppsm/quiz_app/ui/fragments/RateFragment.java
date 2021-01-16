@@ -1,8 +1,13 @@
 package com.ppsm.quiz_app.ui.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +19,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.ppsm.quiz_app.R;
 import com.ppsm.quiz_app.http.JsonPlaceholderAPI;
-import com.ppsm.quiz_app.model.Question;
 import com.ppsm.quiz_app.model.RatesDto;
 import com.ppsm.quiz_app.model.UserRateDto;
-
-import java.util.List;
+import com.ppsm.quiz_app.ui.authorization.LoginActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,10 +54,34 @@ public class RateFragment extends Fragment {
         goodButton = root.findViewById(R.id.rate_well_btn);
         badButton = root.findViewById(R.id.rate_worse_btn);
 
+        final SwipeRefreshLayout pullToRefresh = root.findViewById(R.id.pull_to_refresh_rate);
+
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (isNetworkConnected()) {
+                    getRates();
+                    Toast.makeText(getContext(), "Zaaktualizowano!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    Toast.makeText(getContext(), "Brak połączenia z Internetem", Toast.LENGTH_LONG).show();
+                }
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {                 // odświeżanie przez przeciągnięcie
+                        pullToRefresh.setRefreshing(false);
+                    }
+                }, 500);
+            }
+        });
+
         goodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("1");
                 addRate(getLogin(), true);
             }
         });
@@ -61,7 +89,6 @@ public class RateFragment extends Fragment {
         badButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println( "2");
                 addRate(getLogin(), false);
             }
         });
@@ -75,12 +102,21 @@ public class RateFragment extends Fragment {
                 .build();
         jsonPlaceholderAPI = retrofit.create(JsonPlaceholderAPI.class);
 
-        getRates();
+        if (isNetworkConnected()) {
+            getRates();
+        }
+        else {
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            Toast.makeText(getContext(), "Brak połączenia z Internetem", Toast.LENGTH_LONG).show();
+        }
+
 
         return root;
     }
 
-    private void getRates() {
+    public void getRates() {
 
         Call<RatesDto> call = jsonPlaceholderAPI.getAllRates();
         call.enqueue(new Callback<RatesDto>() {
@@ -100,16 +136,17 @@ public class RateFragment extends Fragment {
             public void onFailure(Call<RatesDto> call, Throwable t) {
                 System.out.println("failure");
                 System.out.println(t.getMessage());
+
             }
         });
     }
 
-    private String getLogin() {
+    public String getLogin() {
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
         return sharedPreferences.getString("LOGIN", "None");
     }
 
-    private void addRate(String userName, Boolean isPositiveOpinion) {
+    public void addRate(String userName, Boolean isPositiveOpinion) {
 
         UserRateDto userRate = new UserRateDto(userName, isPositiveOpinion);
 
@@ -133,8 +170,17 @@ public class RateFragment extends Fragment {
             public void onFailure(Call<Boolean> call, Throwable t) {
                 System.out.println("failure");
                 System.out.println(t.getMessage());
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Brak połączenia z Internetem", Toast.LENGTH_LONG).show();
             }
         });
     }
 
+    public boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 }
