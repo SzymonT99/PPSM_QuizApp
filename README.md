@@ -25,26 +25,26 @@ To run the applications you must:
 ## Presentation
 Registration and login process
 <br />
-<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-login-registration.gif" width="350" height="650">
+<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-login-registration.gif" width="330" height="650">
 <br />
 Playing a quiz
 <br />
-<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz.gif" width="350" height="650">
+<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz.gif" width="330" height="650">
 <br />
 Panel to add questions to the quiz
 <br />
-<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-add-question.gif" width="350" height="650">
+<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-add-question.gif" width="330" height="650">
 <br />
 Change of account details
 <br />
-<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-settings.gif" width="350" height="650">
+<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-settings.gif" width="330" height="650">
 <br />
 Protection against the lack of Internet
 <br />
-<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-no-internet.gif" width="350" height="650">
+<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-no-internet.gif" width="330" height="650">
 <br />
 Admin panel
 <br />
-<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-admin-cz1.gif" width="350" height="650">
+<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-admin-cz1.gif" width="330" height="650">
 <br />
-<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-admin-cz2.gif" width="350" height="650">
+<img src="https://github.com/SzymonT99/PPSM_QuizApp/blob/master/doc/quiz-admin-cz2.gif" width="330" height="650">
